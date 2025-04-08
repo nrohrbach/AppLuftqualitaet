@@ -38,14 +38,14 @@ if gemeinde:
     coordinatesOutput = get_coordinates(gemeinde)
 
     for year in range(1980, 1985):
-    try:
-        # Get the raster value for the current year and coordinates
-        raster_value = get_raster_value(year, coordinatesOutput)
-        # Append the year and raster value to the data list
-        data.append([year, raster_value])
-    except Exception as e:
-        # Handle the error appropriately, e.g., append NaN or skip the year
-        data.append([year, float('nan')])  # Append NaN for failed requests
+        try:
+            # Get the raster value for the current year and coordinates
+            raster_value = get_raster_value(year, coordinatesOutput)
+            # Append the year and raster value to the data list
+            data.append([year, raster_value])
+        except Exception as e:
+            # Handle the error appropriately, e.g., append NaN or skip the year
+            data.append([year, float('nan')])  # Append NaN for failed requests
 
     # Create a pandas DataFrame from the data
     df = pd.DataFrame(data, columns=['Year', 'RasterValue'])
