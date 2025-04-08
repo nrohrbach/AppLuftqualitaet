@@ -1,6 +1,8 @@
 import requests
 import pandas as pd
 import rasterio
+import streamlit as st
+import plotly.express as px
 
 # Funktion zur Abfrage der Koordinaten (Beispiel)
 def get_coordinates(gemeinde):
