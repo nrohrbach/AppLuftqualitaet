@@ -67,4 +67,5 @@ if gemeinde:
     st.plotly_chart(fig)
 
     m = create_map(coordinatesOutput[2:4])
+    output = st_folium(m, width=700)
 
