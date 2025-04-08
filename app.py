@@ -50,6 +50,6 @@ if gemeinde:
 
     # Create a pandas DataFrame from the data
     df = pd.DataFrame(data, columns=['Year', 'RasterValue'])
-    fig = px.bar(df, x=df.index, y='Luftbelastung', title='Schwefeldioxid in µg/m³')
+    fig = px.bar(df, x=df.index, y='RasterValue', title='Schwefeldioxid in µg/m³')
     st.plotly_chart(fig)
 
