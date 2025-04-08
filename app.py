@@ -5,6 +5,7 @@ import streamlit as st
 import plotly.express as px
 
 # Funktion zur Abfrage der Koordinaten (Beispiel)
+# Funktion zur Abfrage der Koordinaten (Beispiel)
 def get_coordinates(gemeinde):
     url = f"https://api3.geo.admin.ch/rest/services/api/SearchServer?searchText={gemeinde}&type=locations&sr=2056"
     try:
@@ -13,10 +14,12 @@ def get_coordinates(gemeinde):
         data = response.json()
         x = data['results'][0]['attrs'].get('x')
         y = data['results'][0]['attrs'].get('y')
-        return y, x
+        lat = data['results'][0]['attrs'].get('lat')
+        lon = data['results'][0]['attrs'].get('lon')
+        return y, x, lat, lon
     except requests.exceptions.RequestException as e:
         print(f"Error fetching data: {e}")
-        return y, x
+        return y, x, lat, lon
 
 # Funktion zur Abfrage des Rasterwerts
 def get_raster_value(year, coordinates):
@@ -24,6 +27,15 @@ def get_raster_value(year, coordinates):
     with rasterio.open(cog_url) as src:
         for val in src.sample([coordinates]):
             return val[0]
+
+def create_map(center):
+    m = folium.Map(location=center,
+        zoom_start=14,
+        control_scale=True,
+        tiles="https://wmts.geo.admin.ch/1.0.0/ch.swisstopo.pixelkarte-farbe/default/current/3857/{z}/{x}/{y}.jpeg",
+        attr='Map data: &copy; <a href="https://www.swisstopo.ch" target="_blank" rel="noopener noreferrer">swisstopo</a>, <a href="https://www.housing-stat.ch/" target="_blank" rel="noopener noreferrer">BFS</a>',
+        )
+    return m
 
 
 # App
@@ -41,7 +53,7 @@ if gemeinde:
     for year in range(1980, 1985):
         try:
             # Get the raster value for the current year and coordinates
-            raster_value = get_raster_value(year, coordinatesOutput)
+            raster_value = get_raster_value(year, coordinatesOutput[0:2])
             # Append the year and raster value to the data list
             data.append([year, raster_value])
         except Exception as e:
@@ -52,4 +64,6 @@ if gemeinde:
     df = pd.DataFrame(data, columns=['Year', 'RasterValue'])
     fig = px.bar(df, x='Year', y='RasterValue', title='Schwefeldioxid in µg/m³')
     st.plotly_chart(fig)
+
+    m = create_map(coordinatesOutput[2:4])
 
