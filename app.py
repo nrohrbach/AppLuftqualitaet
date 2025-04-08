@@ -34,6 +34,7 @@ st.title("Luftqualität in deiner Gemeinde")
 gemeinde = st.text_input('Gib den Namen der Gemeinde ein:')
 
 # Hauptlogik
+data = []
 if gemeinde:
     coordinatesOutput = get_coordinates(gemeinde)
 
