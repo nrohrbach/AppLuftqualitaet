@@ -85,7 +85,7 @@ if gemeinde:
         y=[30, 30],
         mode="lines",
         line=go.scatter.Line(color="Red", dash="dash"),
-        name='Grenzwert 30 µg/m³'
+        name='Jahresgrenzwert gemäss Luftreinhalte-Verordnung:  30 µg/m³'
     ))
     
     # Aktualisieren des Layouts, um die Legende hinzuzufügen und weitere Informationen zu ergänzen
@@ -95,12 +95,12 @@ if gemeinde:
             itemsizing="constant",
             orientation="h",  # Horizontale Ausrichtung der Legende
             x=0.5,  # Position der Legende
-            xanchor="center",
+            xanchor="left",
             y=-0.2,  # Position der Legende
             yanchor="top",
             bgcolor="white",  # Hintergrundfarbe der Legende
-            bordercolor="Black",  # Rahmenfarbe der Legende
-            borderwidth=2,  # Rahmenbreite der Legende
+            #bordercolor="Black",  # Rahmenfarbe der Legende
+            #borderwidth=2,  # Rahmenbreite der Legende
             font=dict(
                 family="Arial",
                 size=12,
