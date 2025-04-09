@@ -80,13 +80,13 @@ if gemeinde:
     fig = px.bar(df, x='Year', y='RasterValue', title='Schwefeldioxid in µg/m³')
 
     # Hinzufügen einer Linie bei Grenzwert von 30
-    fig.add_shape(
-        type="line",
-        x0=df['Year'].min(), x1=df['Year'].max(),
-        y0=30, y1=30,
-        line=dict(color="Red", width=2, dash="dash"),
+    fig.add_trace(go.Scatter(
+        x=[df['Year'].min(), df['Year'].max()],
+        y=[30, 30],
+        mode="lines",
+        line=go.scatter.Line(color="Red", dash="dash"),
         name='Grenzwert 30 µg/m³'
-    )
+    ))
     
     # Aktualisieren des Layouts, um die Legende hinzuzufügen und weitere Informationen zu ergänzen
     fig.update_layout(
