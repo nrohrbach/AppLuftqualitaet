@@ -84,6 +84,13 @@ if gemeinde:
         y0=30, y1=30,
         line=dict(color="Red", width=2, dash="dash"),
         )
+    # Aktualisieren des Layouts, um die Legende hinzuzufügen
+    fig.update_layout(
+        legend=dict(
+            title="Legende",
+            itemsizing="constant"
+    )
+)
     st.plotly_chart(fig)
 
     m = create_map(coordinatesOutput[2:4])
