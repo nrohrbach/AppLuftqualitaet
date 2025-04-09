@@ -96,9 +96,9 @@ if gemeinde:
             orientation="h",  # Horizontale Ausrichtung der Legende
             x=0.5,  # Position der Legende
             xanchor="center",
-            y=1.1,  # Position der Legende
+            y=-0.2,  # Position der Legende
             yanchor="top",
-            bgcolor="LightSteelBlue",  # Hintergrundfarbe der Legende
+            bgcolor="white",  # Hintergrundfarbe der Legende
             bordercolor="Black",  # Rahmenfarbe der Legende
             borderwidth=2,  # Rahmenbreite der Legende
             font=dict(
