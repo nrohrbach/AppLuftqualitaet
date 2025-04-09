@@ -26,7 +26,7 @@ def get_coordinates(gemeinde):
 
 # Funktion zur Abfrage des Rasterwerts
 def get_raster_value(year, coordinates):
-    cog_url = f"https://data.geo.admin.ch/ch.bafu.luftreinhaltung-schwefeldioxid/luftreinhaltung-schwefeldioxid_{year}/luftreinhaltung-schwefeldioxid_{year}_2056.tif"
+    cog_url = f"https://data.geo.admin.ch/ch.bafu.luftreinhaltung-stickstoffdioxid/luftreinhaltung-stickstoffdioxid_{year}/luftreinhaltung-stickstoffdioxid_{year}_2056.tif"
     with rasterio.open(cog_url) as src:
         for val in src.sample([coordinates]):
             return val[0]
@@ -41,7 +41,7 @@ def create_map(center):
     
     # Zweite WMTS-Ebene hinzufügen
     folium.TileLayer(
-        tiles="https://wmts.geo.admin.ch/1.0.0/ch.bafu.luftreinhaltung-schwefeldioxid/default/2023/3857/{z}/{x}/{y}.png",
+        tiles="https://wmts.geo.admin.ch/1.0.0/ch.bafu.luftreinhaltung-stickstoffdioxid/default/2023/3857/{z}/{x}/{y}.png",
         name='Luftreinhaltung Schwefeldioxid',
         overlay=True,
         opacity=0.7,
@@ -63,6 +63,14 @@ def create_map(center):
 # App
 # Streamlit app
 st.title("Luftqualität in deiner Gemeinde")
+st.markdown(
+    """
+Dank der erfolgreichen Schweizer Luftreinhaltepolitik hat sich die Luftqualität in der Schweiz seit den 1990er Jahren deutlich verbessert.
+
+Wie sieht die Luftqualität in deiner Gemeinde aus? Finde es heraus:
+
+"""
+)
 
 # Suchfeld für die Eingabe der Gemeinde
 gemeinde = st.text_input('Gib den Namen der Gemeinde ein:')
@@ -72,7 +80,7 @@ data = []
 if gemeinde:
     coordinatesOutput = get_coordinates(gemeinde)
 
-    for year in range(1980, 1985):
+    for year in range(1990, 1995):
         try:
             # Get the raster value for the current year and coordinates
             raster_value = get_raster_value(year, coordinatesOutput[0:2])
@@ -124,3 +132,14 @@ if gemeinde:
     m = create_map(coordinatesOutput[2:4])
     output = st_folium(m, width=700)
 
+    st.markdown(
+    """
+    ***Hinweis***
+    
+    Die Zeitreihe zeigt die modellierten Karten der Jahresmittelwerte seit 1990 im 200 m Raster, ab 2020 im 20 m Raster.
+    Lokal kann die Konzentration von den modellierten Daten abweichen.
+    Einzelne Pixel sind nicht für die Bewertung von Einzelstandorten heranzuziehen.
+    Der in der Luftreinhalte-Verordnung festgelegte Jahresgrenzwert für NO₂ liegt bei 30 µg/m³
+    
+    """
+    )
