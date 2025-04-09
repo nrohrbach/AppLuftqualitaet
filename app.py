@@ -43,7 +43,8 @@ def create_map(center):
         tiles="https://wmts.geo.admin.ch/1.0.0/ch.bafu.luftreinhaltung-schwefeldioxid/default/2023/3857/{z}/{x}/{y}.png",
         name='Luftreinhaltung Schwefeldioxid',
         overlay=True,
-        opacity=0.7
+        opacity=0.7,
+        attr=' '
     ).add_to(m)
     
     return m
