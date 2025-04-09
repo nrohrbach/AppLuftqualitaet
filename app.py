@@ -41,7 +41,7 @@ def create_map(center):
     # Zweite WMTS-Ebene hinzufügen
     folium.TileLayer(
         tiles="https://wmts.geo.admin.ch/1.0.0/ch.bafu.luftreinhaltung-schwefeldioxid/default/2023/3857/{z}/{x}/{y}.png",
-        attr='Map data: &copy; <a href="https://www.swisstopo.ch" target="_blank" rel="noopener noreferrer">swisstopo</a>;<a href="https://www.bafu.admin.ch/" target="_blank" rel="noopener noreferrer">BAFU</a>'',
+        attr='Map data: &copy; <a href="https://www.swisstopo.ch" target="_blank" rel="noopener noreferrer">swisstopo</a>;<a href="https://www.bafu.admin.ch/" target="_blank" rel="noopener noreferrer">BAFU</a>',
         name='Luftreinhaltung Schwefeldioxid',
         overlay=True,
         opacity=0.7
