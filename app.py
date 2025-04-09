@@ -37,6 +37,13 @@ def create_map(center):
         tiles="https://wmts.geo.admin.ch/1.0.0/ch.swisstopo.pixelkarte-farbe/default/current/3857/{z}/{x}/{y}.jpeg",
         attr='Map data: &copy; <a href="https://www.swisstopo.ch" target="_blank" rel="noopener noreferrer">swisstopo</a>, <a href="https://www.housing-stat.ch/" target="_blank" rel="noopener noreferrer">BFS</a>',
         )
+        # Zweite WMTS-Ebene hinzufügen
+        folium.TileLayer(
+        tiles="https://wmts.geo.admin.ch/1.0.0/ch.bafu.luftreinhaltung-schwefeldioxid/default/current/3857/{z}/{x}/{y}.jpeg",
+        attr='Map data: &copy; <a href="https://www.swisstopo.ch" target="_blank" rel="noopener noreferrer">swisstopo</a>',
+        name='Swiss TLM3D',
+        overlay=True
+        ).add_to(m)
     return m
 
 
