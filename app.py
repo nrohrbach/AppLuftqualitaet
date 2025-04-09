@@ -80,7 +80,7 @@ data = []
 if gemeinde:
     coordinatesOutput = get_coordinates(gemeinde)
 
-    for year in range(1990, 1995):
+    for year in range(1990, 2023):
         try:
             # Get the raster value for the current year and coordinates
             raster_value = get_raster_value(year, coordinatesOutput[0:2])
