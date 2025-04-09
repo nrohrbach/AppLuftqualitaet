@@ -4,6 +4,7 @@ import rasterio
 import streamlit as st
 import plotly.express as px
 import folium
+from streamlit_folium import st_folium
 
 # Funktion zur Abfrage der Koordinaten (Beispiel)
 # Funktion zur Abfrage der Koordinaten (Beispiel)
