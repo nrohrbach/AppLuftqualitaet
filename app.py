@@ -59,7 +59,7 @@ st.title("Luftqualität in deiner Gemeinde")
 
 # Suchfeld für die Eingabe der Gemeinde
 gemeinde = st.text_input('Gib den Namen der Gemeinde ein:')
-m = create_map("46.9","8.1")
+m = create_map("[46.9","8.1]")
 output = st_folium(m, width=700)
 
 # Hauptlogik
