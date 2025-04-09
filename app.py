@@ -44,6 +44,7 @@ def create_map(center):
         name='Luftreinhaltung Schwefeldioxid',
         overlay=True,
         opacity=0.7,
+        show=True,
         attr=' '
     ).add_to(m)
     
