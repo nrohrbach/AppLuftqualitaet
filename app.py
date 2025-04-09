@@ -49,6 +49,13 @@ def create_map(center):
         attr=' '
     ).add_to(m)
     
+    # Punkt bei der center-Position hinzufügen
+    folium.Marker(
+        location=center,
+        popup=gemeinde,
+        icon=folium.Icon(color='red')
+    ).add_to(m)
+    
     return m
 
 
