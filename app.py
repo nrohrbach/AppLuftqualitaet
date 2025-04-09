@@ -79,34 +79,34 @@ if gemeinde:
     fig = px.bar(df, x='Year', y='RasterValue', title='Schwefeldioxid in µg/m³')
 
     # Hinzufügen einer Linie bei Grenzwert von 30
-fig.add_shape(
-    type="line",
-    x0=df['Year'].min(), x1=df['Year'].max(),
-    y0=30, y1=30,
-    line=dict(color="Red", width=2, dash="dash"),
-    name='Grenzwert 30 µg/m³'
-)
-
-# Aktualisieren des Layouts, um die Legende hinzuzufügen und weitere Informationen zu ergänzen
-fig.update_layout(
-    legend=dict(
-        title="Legende",
-        itemsizing="constant",
-        orientation="h",  # Horizontale Ausrichtung der Legende
-        x=0.5,  # Position der Legende
-        xanchor="center",
-        y=1.1,  # Position der Legende
-        yanchor="top",
-        bgcolor="LightSteelBlue",  # Hintergrundfarbe der Legende
-        bordercolor="Black",  # Rahmenfarbe der Legende
-        borderwidth=2,  # Rahmenbreite der Legende
-        font=dict(
-            family="Arial",
-            size=12,
-            color="Black"
+    fig.add_shape(
+        type="line",
+        x0=df['Year'].min(), x1=df['Year'].max(),
+        y0=30, y1=30,
+        line=dict(color="Red", width=2, dash="dash"),
+        name='Grenzwert 30 µg/m³'
+    )
+    
+    # Aktualisieren des Layouts, um die Legende hinzuzufügen und weitere Informationen zu ergänzen
+    fig.update_layout(
+        legend=dict(
+            title="Legende",
+            itemsizing="constant",
+            orientation="h",  # Horizontale Ausrichtung der Legende
+            x=0.5,  # Position der Legende
+            xanchor="center",
+            y=1.1,  # Position der Legende
+            yanchor="top",
+            bgcolor="LightSteelBlue",  # Hintergrundfarbe der Legende
+            bordercolor="Black",  # Rahmenfarbe der Legende
+            borderwidth=2,  # Rahmenbreite der Legende
+            font=dict(
+                family="Arial",
+                size=12,
+                color="Black"
+            )
         )
     )
-)
     st.plotly_chart(fig)
 
     m = create_map(coordinatesOutput[2:4])
