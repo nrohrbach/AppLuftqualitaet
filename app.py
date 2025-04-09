@@ -95,10 +95,10 @@ if gemeinde:
     # Aktualisieren des Layouts, um die Legende hinzuzufügen und weitere Informationen zu ergänzen
     fig.update_layout(
         legend=dict(
-            title="Legende",
+            #title="Legende",
             itemsizing="constant",
             orientation="h",  # Horizontale Ausrichtung der Legende
-            x=0.5,  # Position der Legende
+            x=0,  # Position der Legende
             xanchor="left",
             y=-0.2,  # Position der Legende
             yanchor="top",
