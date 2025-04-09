@@ -77,6 +77,13 @@ if gemeinde:
     # Create a pandas DataFrame from the data
     df = pd.DataFrame(data, columns=['Year', 'RasterValue'])
     fig = px.bar(df, x='Year', y='RasterValue', title='Schwefeldioxid in µg/m³')
+    # Hinzufügen einer Linie bei Grenzwert von 30
+    fig.add_shape(
+        type="line",
+        x0=df['Year'].min(), x1=df['Year'].max(),
+        y0=30, y1=30,
+        line=dict(color="Red", width=2, dash="dash"),
+        )
     st.plotly_chart(fig)
 
     m = create_map(coordinatesOutput[2:4])
