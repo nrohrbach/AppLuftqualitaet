@@ -3,6 +3,7 @@ import pandas as pd
 import rasterio
 import streamlit as st
 import plotly.express as px
+import plotly.graph_objects as go
 import folium
 from streamlit_folium import st_folium
 
