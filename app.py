@@ -46,9 +46,6 @@ def create_map(center):
         opacity=0.7
     ).add_to(m)
     
-    # Layer Control hinzufügen, um zwischen den Ebenen zu wechseln
-    folium.LayerControl().add_to(m)
-    
     return m
 
 
@@ -59,8 +56,6 @@ st.title("Luftqualität in deiner Gemeinde")
 
 # Suchfeld für die Eingabe der Gemeinde
 gemeinde = st.text_input('Gib den Namen der Gemeinde ein:')
-m = create_map("[46.9","8.1]")
-output = st_folium(m, width=700)
 
 # Hauptlogik
 data = []
