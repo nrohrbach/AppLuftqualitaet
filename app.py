@@ -97,8 +97,8 @@ Wie sieht die Luftqualität in deiner Gemeinde aus? Finde es heraus:
 
 # Create a radiobutton
 option = st.radio(
-    "Luftbelastung auswählen:",
-    luftbelastung
+    "Luftbelastung auswählen:",
+    luftbelastung
 )
 
 
