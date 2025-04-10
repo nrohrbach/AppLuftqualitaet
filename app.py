@@ -150,11 +150,12 @@ if gemeinde:
     # Initialisiere die Karte nur einmal
     if 'm' not in st.session_state:
         st.session_state['m'] = create_map(coordinatesOutput[2:4],year)
+        output = st_folium(st.session_state['m'], width=700)
     
     # Slider für das Jahr
     year = st.slider("Wählen Sie das Jahr", 1990, 2023, 2023)
 
-    output = st_folium(m, width=700)
+    
     # Füge den Layer zur Karte hinzu, wenn sich der Slider-Wert ändert
     if 'last_year' not in st.session_state or st.session_state['last_year'] != year:
         st.session_state['last_year'] = year
