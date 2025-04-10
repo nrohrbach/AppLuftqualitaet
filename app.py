@@ -144,7 +144,7 @@ if gemeinde:
     
     # Initialisiere die Karte nur einmal
     if 'map' not in st.session_state:
-        st.session_state['map'] = create_base_map(center)
+        st.session_state['map'] = create_base_map(center)
 
 
     year = 2023
