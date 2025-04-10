@@ -160,7 +160,7 @@ if gemeinde:
         st.session_state['last_year'] = year
         m = st.session_state['m']
         add_layer_to_map(m, year)
-        output = st_folium(m, width=700)
+
 
 
     
@@ -170,7 +170,7 @@ if gemeinde:
 
     
     #m = create_map(coordinatesOutput[2:4],year)
-    output = st_folium(m, width=700)
+    #output = st_folium(m, width=700)
 
     
 
