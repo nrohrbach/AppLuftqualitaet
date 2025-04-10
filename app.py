@@ -146,38 +146,22 @@ if gemeinde:
     )
     st.plotly_chart(fig)
 
-    #year = 2023
     # Initialisiere die Karte nur einmal
     if 'm' not in st.session_state:
-        st.session_state['m'] = create_map(coordinatesOutput[2:4],year)
-        
+        st.session_state['m'] = create_map(coordinatesOutput[2:4],year)  
     
     # Slider für das Jahr
     year = st.slider("Wählen Sie das Jahr", 1990, 2023, 2023)
-
     
     # Füge den Layer zur Karte hinzu, wenn sich der Slider-Wert ändert
     if 'last_year' not in st.session_state or st.session_state['last_year'] != year:
         st.session_state['last_year'] = year
         m = st.session_state['m']
         add_layer_to_map(m, year)
-
-    st_folium(st.session_state['m'], width=700)
-
-
-
-    
-    # Füge den Layer zur Karte hinzu
-    #m = st.session_state['m']
-    #add_layer_to_map(m, year)
-
-    
-    #m = create_map(coordinatesOutput[2:4],year)
-    #output = st_folium(m, width=700)
-
-    
-
-
+        st_folium(m, width=700)
+    else:
+        st_folium(st.session_state['m'], width=700)
+   
 
     st.markdown(
     """
