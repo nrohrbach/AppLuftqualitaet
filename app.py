@@ -136,7 +136,7 @@ if gemeinde:
 
     
     # Slider für das Jahr
-    year = st.slider("Wählen Sie das Jahr", 1990, 2023, 2023
+    year = st.slider("Wählen Sie das Jahr", 1990, 2023, 2023)
 
 
     st.markdown(
