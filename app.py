@@ -154,7 +154,7 @@ if gemeinde:
     # Slider für das Jahr
     year = st.slider("Wählen Sie das Jahr", 1990, 2023, 2023)
 
-    m = st_folium(m, width=700)
+    output = st_folium(m, width=700)
     # Füge den Layer zur Karte hinzu, wenn sich der Slider-Wert ändert
     if 'last_year' not in st.session_state or st.session_state['last_year'] != year:
         st.session_state['last_year'] = year
