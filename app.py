@@ -31,17 +31,17 @@ def get_raster_value(year, coordinates):
         for val in src.sample([coordinates]):
             return val[0]
 
-def create_map(center):
+def create_map(center, year):
     m = folium.Map(location=center,
-        zoom_start=10,
+        zoom_start=12,
         control_scale=True,
         tiles="https://wmts.geo.admin.ch/1.0.0/ch.swisstopo.pixelkarte-farbe/default/current/3857/{z}/{x}/{y}.jpeg",
         attr='Map data: &copy; <a href="https://www.swisstopo.ch" target="_blank" rel="noopener noreferrer">swisstopo</a>;<a href="https://www.bafu.admin.ch/" target="_blank" rel="noopener noreferrer">BAFU</a>'
     )
-    
+        
     # Zweite WMTS-Ebene hinzufügen
     folium.TileLayer(
-        tiles="https://wmts.geo.admin.ch/1.0.0/ch.bafu.luftreinhaltung-stickstoffdioxid/default/2023/3857/{z}/{x}/{y}.png",
+        tiles=f"https://wmts.geo.admin.ch/1.0.0/ch.bafu.luftreinhaltung-stickstoffdioxid/default/{year}/3857/{{z}}/{{x}}/{{y}}.png",
         name='Luftreinhaltung Schwefeldioxid',
         overlay=True,
         opacity=0.7,
@@ -57,6 +57,23 @@ def create_map(center):
     ).add_to(m)
     
     return m
+
+
+def add_layer_to_map(m, year):
+    # Entferne vorhandene WMTS-Layer
+    for layer in list(m._children):
+        if 'Luftreinhaltung Stickstoffdioxid' in layer:
+            del m._children[layer]
+
+    folium.TileLayer(
+        tiles=f"https://wmts.geo.admin.ch/1.0.0/ch.bafu.luftreinhaltung-stickstoffdioxid/default/{year}/3857/{{z}}/{{x}}/{{y}}.png",
+        name='Luftreinhaltung Stickstoffdioxid',
+        overlay=True,
+        opacity=0.7,
+        show=True,
+        attr='Map data: &copy; <a href="https://www.bafu.admin.ch/" target="_blank" rel="noopener noreferrer">BAFU</a>'
+    ).add_to(m)
+
 
 
 
@@ -128,9 +145,13 @@ if gemeinde:
         )
     )
     st.plotly_chart(fig)
+    
+    # Slider für das Jahr
+    year = st.slider("Wählen Sie das Jahr", 1990, 2023, 2023)
 
-    m = create_map(coordinatesOutput[2:4])
-    output = st_folium(m, width=700)
+    # Zeige die Karte an
+    st.session_state['m'] = create_map(coordinatesOutput[2:4],year) 
+    st_folium(st.session_state['m'], width=700)
 
     st.markdown(
     """
