@@ -146,7 +146,7 @@ if gemeinde:
     )
     st.plotly_chart(fig)
 
-    year = 2023
+    #year = 2023
     # Initialisiere die Karte nur einmal
     if 'm' not in st.session_state:
         st.session_state['m'] = create_map(coordinatesOutput[2:4],year)
@@ -162,7 +162,7 @@ if gemeinde:
         m = st.session_state['m']
         add_layer_to_map(m, year)
 
-        st_folium(st.session_state['m'], width=700)
+    st_folium(st.session_state['m'], width=700)
 
 
 
