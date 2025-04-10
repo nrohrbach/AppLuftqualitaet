@@ -61,9 +61,9 @@ def create_map(center, year):
 
 def add_layer_to_map(m, year):
     # Entferne vorhandene WMTS-Layer
-    for layer in list(m._children):
-        if 'Luftreinhaltung Stickstoffdioxid' in layer:
-            del m._children[layer]
+    for layer in list(m._children):
+        if 'Luftreinhaltung Stickstoffdioxid' in layer:
+            del m._children[layer]
 
     folium.TileLayer(
         tiles=f"https://wmts.geo.admin.ch/1.0.0/ch.bafu.luftreinhaltung-stickstoffdioxid/default/{year}/3857/{{z}}/{{x}}/{{y}}.png",
