@@ -152,7 +152,7 @@ if gemeinde:
 
    
     # Zeige die Karte an
-    st_folium(st.session_state['m'], width=700)
+    #st_folium(st.session_state['m'], width=700)
 
     st.markdown(
     """
