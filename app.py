@@ -33,7 +33,7 @@ def get_raster_value(year, coordinates):
 
 def create_map(center, year):
     m = folium.Map(location=center,
-        zoom_start=10,
+        zoom_start=12,
         control_scale=True,
         tiles="https://wmts.geo.admin.ch/1.0.0/ch.swisstopo.pixelkarte-farbe/default/current/3857/{z}/{x}/{y}.jpeg",
         attr='Map data: &copy; <a href="https://www.swisstopo.ch" target="_blank" rel="noopener noreferrer">swisstopo</a>;<a href="https://www.bafu.admin.ch/" target="_blank" rel="noopener noreferrer">BAFU</a>'
@@ -149,15 +149,8 @@ if gemeinde:
     # Slider für das Jahr
     year = st.slider("Wählen Sie das Jahr", 1990, 2023, 2023)
 
-    st.session_state['m'] = create_map(coordinatesOutput[2:4],year)
-    #output = st_folium(m, width=700)
-    
-    # Initialisiere die Karte nur einmal
-    #if 'm' not in st.session_state:
-     #   st.session_state['m'] = create_map(coordinatesOutput[2:4],year)
-      #  st.session_state['last_year'] = year
-   
     # Zeige die Karte an
+    st.session_state['m'] = create_map(coordinatesOutput[2:4],year) 
     st_folium(st.session_state['m'], width=700)
 
     st.markdown(
