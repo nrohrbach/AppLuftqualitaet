@@ -39,16 +39,6 @@ def create_map(center, year):
         attr='Map data: &copy; <a href="https://www.swisstopo.ch" target="_blank" rel="noopener noreferrer">swisstopo</a>;<a href="https://www.bafu.admin.ch/" target="_blank" rel="noopener noreferrer">BAFU</a>'
     )
     
-    # Zweite WMTS-Ebene hinzufügen
-    folium.TileLayer(
-        tiles=f"https://wmts.geo.admin.ch/1.0.0/ch.bafu.luftreinhaltung-stickstoffdioxid/default/{year}/3857/{{z}}/{{x}}/{{y}}.png",
-        name='Luftreinhaltung Schwefeldioxid',
-        overlay=True,
-        opacity=0.7,
-        show=True,
-        attr=' '
-    ).add_to(m)
-    
     # Punkt bei der center-Position hinzufügen
     folium.Marker(
         location=center,
