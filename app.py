@@ -60,7 +60,7 @@ def create_map(center, year):
 
 
 def add_layer_to_map(m, year):
-    folium.TileLayer(
+    folium.TileLayer(
         tiles=f"https://wmts.geo.admin.ch/1.0.0/ch.bafu.luftreinhaltung-stickstoffdioxid/default/{year}/3857/{{z}}/{{x}}/{{y}}.png",
         name='Luftreinhaltung Stickstoffdioxid',
         overlay=True,
