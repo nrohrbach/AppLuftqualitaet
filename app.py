@@ -131,7 +131,7 @@ if gemeinde:
 
     year = 2023
     # Slider für das Jahr
-    #year = st.slider("Wählen Sie das Jahr", 1990, 2023, 2023)
+    year = st.slider("Wählen Sie das Jahr", 1990, 2023, 2023)
     
     m = create_map(coordinatesOutput[2:4],year)
     output = st_folium(m, width=700)
