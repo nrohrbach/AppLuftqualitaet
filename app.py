@@ -38,6 +38,16 @@ def create_map(center, year):
         tiles="https://wmts.geo.admin.ch/1.0.0/ch.swisstopo.pixelkarte-farbe/default/current/3857/{z}/{x}/{y}.jpeg",
         attr='Map data: &copy; <a href="https://www.swisstopo.ch" target="_blank" rel="noopener noreferrer">swisstopo</a>;<a href="https://www.bafu.admin.ch/" target="_blank" rel="noopener noreferrer">BAFU</a>'
     )
+        
+    # Zweite WMTS-Ebene hinzufügen
+    folium.TileLayer(
+        tiles=f"https://wmts.geo.admin.ch/1.0.0/ch.bafu.luftreinhaltung-stickstoffdioxid/default/{year}/3857/{{z}}/{{x}}/{{y}}.png",
+        name='Luftreinhaltung Schwefeldioxid',
+        overlay=True,
+        opacity=0.7,
+        show=True,
+        attr=' '
+    ).add_to(m)
     
     # Punkt bei der center-Position hinzufügen
     folium.Marker(
@@ -139,14 +149,7 @@ if gemeinde:
     # Slider für das Jahr
     year = st.slider("Wählen Sie das Jahr", 1990, 2023, 2023)
     
-    # Initialisiere die Karte nur einmal
-    if 'm' not in st.session_state:
-        st.session_state['m'] = create_map(coordinatesOutput[2:4],year)
-        st.session_state['last_year'] = year
 
-    if st.session_state['last_year'] != year:
-        st.session_state['last_year'] = year
-        add_layer_to_map(st.session_state['m'], year)
    
     # Zeige die Karte an
     st_folium(st.session_state['m'], width=700)
