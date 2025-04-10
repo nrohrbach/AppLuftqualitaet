@@ -143,16 +143,16 @@ if gemeinde:
 
     year = 2023
     # Initialisiere die Karte nur einmal
-    if 'map' not in st.session_state:
-        st.session_state['map'] = create_map(coordinatesOutput[2:4],year)
+    if 'm' not in st.session_state:
+        st.session_state['m'] = create_map(coordinatesOutput[2:4],year)
     
     # Slider für das Jahr
     year = st.slider("Wählen Sie das Jahr", 1990, 2023, 2023)
 
     
     # Füge den Layer zur Karte hinzu
-    map = st.session_state['map']
-    add_layer_to_map(map, year)
+    m = st.session_state['m']
+    add_layer_to_map(m, year)
 
     
     #m = create_map(coordinatesOutput[2:4],year)
