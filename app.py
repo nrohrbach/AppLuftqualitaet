@@ -141,13 +141,11 @@ if gemeinde:
     )
     st.plotly_chart(fig)
 
-    
+    year = 2023
     # Initialisiere die Karte nur einmal
     if 'map' not in st.session_state:
-        st.session_state['map'] = create_base_map(center)
-
-
-    year = 2023
+        st.session_state['map'] = create_map(coordinatesOutput[2:4],year)
+    
     # Slider für das Jahr
     year = st.slider("Wählen Sie das Jahr", 1990, 2023, 2023)
 
