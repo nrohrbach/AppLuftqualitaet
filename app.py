@@ -7,6 +7,12 @@ import plotly.graph_objects as go
 import folium
 from streamlit_folium import st_folium
 
+luftbelastung = [
+    'Ammoniakkonzentration',
+    'Feinstaub PM10'
+    
+]
+
 # Funktion zur Abfrage der Koordinaten (Beispiel)
 # Funktion zur Abfrage der Koordinaten (Beispiel)
 def get_coordinates(gemeinde):
@@ -88,6 +94,13 @@ Wie sieht die Luftqualität in deiner Gemeinde aus? Finde es heraus:
 
 """
 )
+
+# Create a radiobutton
+option = st.radio(
+    "Luftbelastung auswählen:",
+    luftbelastung
+)
+
 
 # Suchfeld für die Eingabe der Gemeinde
 gemeinde = st.text_input('Gib den Namen der Gemeinde ein:')
