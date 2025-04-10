@@ -31,7 +31,7 @@ def get_raster_value(year, coordinates):
         for val in src.sample([coordinates]):
             return val[0]
 
-def create_map(center):
+def create_map(center, year):
     m = folium.Map(location=center,
         zoom_start=10,
         control_scale=True,
@@ -41,7 +41,7 @@ def create_map(center):
     
     # Zweite WMTS-Ebene hinzufügen
     folium.TileLayer(
-        tiles="https://wmts.geo.admin.ch/1.0.0/ch.bafu.luftreinhaltung-stickstoffdioxid/default/2023/3857/{z}/{x}/{y}.png",
+        tiles="https://wmts.geo.admin.ch/1.0.0/ch.bafu.luftreinhaltung-stickstoffdioxid/default/{year}/3857/{z}/{x}/{y}.png",
         name='Luftreinhaltung Schwefeldioxid',
         overlay=True,
         opacity=0.7,
@@ -129,8 +129,15 @@ if gemeinde:
     )
     st.plotly_chart(fig)
 
-    m = create_map(coordinatesOutput[2:4])
+    year = 2023
+    
+    m = create_map(coordinatesOutput[2:4],)
     output = st_folium(m, width=700)
+
+    
+    # Slider für das Jahr
+    year = st.slider("Wählen Sie das Jahr", 1990, 2023, 2023
+
 
     st.markdown(
     """
