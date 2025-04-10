@@ -42,7 +42,7 @@ def create_map(center, year):
     # Zweite WMTS-Ebene hinzufügen
     folium.TileLayer(
         tiles=f"https://wmts.geo.admin.ch/1.0.0/ch.bafu.luftreinhaltung-stickstoffdioxid/default/{year}/3857/{{z}}/{{x}}/{{y}}.png",
-        name='Luftreinhaltung Schwefeldioxid',
+        name='Luftreinhaltung Stickstoffdioxid',
         overlay=True,
         opacity=0.7,
         show=True,
