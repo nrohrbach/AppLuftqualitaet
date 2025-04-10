@@ -162,7 +162,7 @@ if gemeinde:
         m = st.session_state['m']
         add_layer_to_map(m, year)
 
-    output = st_folium(st.session_state['m'], width=700)
+    st_folium(st.session_state['m'], width=700)
 
 
 
