@@ -129,7 +129,7 @@ if gemeinde:
     )
     st.plotly_chart(fig)
 
-    #year = 2023
+    year = 2023
     # Slider für das Jahr
     year = st.slider("Wählen Sie das Jahr", 1990, 2023, 2023)
     
