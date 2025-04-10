@@ -61,13 +61,13 @@ def create_map(center, year):
 
 def add_layer_to_map(m, year):
     folium.TileLayer(
-        tiles=f"https://wmts.geo.admin.ch/1.0.0/ch.bafu.luftreinhaltung-stickstoffdioxid/default/{year}/3857/{{z}}/{{x}}/{{y}}.png",
-        name='Luftreinhaltung Stickstoffdioxid',
-        overlay=True,
-        opacity=0.7,
-        show=True,
-        attr='Map data: &copy; <a href="https://www.bafu.admin.ch/" target="_blank" rel="noopener noreferrer">BAFU</a>'
-    ).add_to(m)
+        tiles=f"https://wmts.geo.admin.ch/1.0.0/ch.bafu.luftreinhaltung-stickstoffdioxid/default/{year}/3857/{{z}}/{{x}}/{{y}}.png",
+        name='Luftreinhaltung Stickstoffdioxid',
+        overlay=True,
+        opacity=0.7,
+        show=True,
+        attr='Map data: &copy; <a href="https://www.bafu.admin.ch/" target="_blank" rel="noopener noreferrer">BAFU</a>'
+    ).add_to(m)
 
 
 
