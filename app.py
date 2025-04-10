@@ -59,6 +59,18 @@ def create_map(center, year):
     return m
 
 
+def add_layer_to_map(m, year):
+    folium.TileLayer(
+        tiles=f"https://wmts.geo.admin.ch/1.0.0/ch.bafu.luftreinhaltung-stickstoffdioxid/default/{year}/3857/{{z}}/{{x}}/{{y}}.png",
+        name='Luftreinhaltung Stickstoffdioxid',
+        overlay=True,
+        opacity=0.7,
+        show=True,
+        attr='Map data: &copy; <a href="https://www.bafu.admin.ch/" target="_blank" rel="noopener noreferrer">BAFU</a>'
+    ).add_to(m)
+
+
+
 
 # App
 # Streamlit app
@@ -129,11 +141,23 @@ if gemeinde:
     )
     st.plotly_chart(fig)
 
+    
+    # Initialisiere die Karte nur einmal
+    if 'map' not in st.session_state:
+        st.session_state['map'] = create_base_map(center)
+
+
     year = 2023
     # Slider für das Jahr
     year = st.slider("Wählen Sie das Jahr", 1990, 2023, 2023)
+
     
-    m = create_map(coordinatesOutput[2:4],year)
+    # Füge den Layer zur Karte hinzu
+    map = st.session_state['map']
+    add_layer_to_map(map, year)
+
+    
+    #m = create_map(coordinatesOutput[2:4],year)
     output = st_folium(m, width=700)
 
     
